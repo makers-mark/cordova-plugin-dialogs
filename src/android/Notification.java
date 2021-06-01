@@ -555,15 +555,13 @@ public class Notification extends CordovaPlugin {
     @SuppressLint("NewApi")
     private void changeTextDirection(Builder dlg){
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-        dlg.create();
-        AlertDialog dialog = dlg.show();
+        AlertDialog dialog = dlg.create();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        dialog.show();
         dialogs.add(dialog);
         if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
             TextView messageview = (TextView)dialog.findViewById(android.R.id.message);
             messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);
         }
-        AlertDialog dialog = dlg.create();
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-        dialog.show();
     }
 }
