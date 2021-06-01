@@ -29,6 +29,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.WindowManager
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -561,5 +562,8 @@ public class Notification extends CordovaPlugin {
             TextView messageview = (TextView)dialog.findViewById(android.R.id.message);
             messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);
         }
+        AlertDialog dialog = dlg.create();
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        dialog.show();
     }
 }
